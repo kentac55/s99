@@ -2,14 +2,16 @@ language: scala
 sudo: false
 cache:
   directories:
-  - $HOME/.ivy2/cache
-  - $HOME/.sbt/launchers
+    - $HOME/.ivy2/cache
+    - $HOME/.sbt/launchers
 script:
-- sbt ++$TRAVIS_SCALA_VERSION test:scalafmt test
-- find $HOME/.ivy2 -name "ivydata-*.properties" | xargs rm
+  - sbt ++$TRAVIS_SCALA_VERSION clean coverage test:scalafmt test coverageReport &&
+    sbt coverageAggregate
+after_success:
+  - sbt coveralls
 scala:
-- 2.11.11
+  - 2.11.11
 matrix:
   include:
-  - scala: 2.12.2
+    - scala: 2.12.2
 jdk: oraclejdk8
