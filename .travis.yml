@@ -2,16 +2,19 @@ language: scala
 sudo: false
 cache:
   directories:
-    - $HOME/.ivy2/cache
-    - $HOME/.sbt/launchers
+  - "$HOME/.ivy2/cache"
+  - "$HOME/.sbt/launchers"
 script:
-  - sbt ++$TRAVIS_SCALA_VERSION clean coverage test:scalafmt test coverageReport &&
-    sbt coverageAggregate
+- sbt ++$TRAVIS_SCALA_VERSION clean coverage test:scalafmt test coverageReport &&
+  sbt coverageAggregate
 after_success:
-  - sbt coveralls
+- sbt coveralls
 scala:
-  - 2.11.11
+- 2.11.11
 matrix:
   include:
-    - scala: 2.12.2
+  - scala: 2.12.2
 jdk: oraclejdk8
+notifications:
+  slack:
+    secure: oCi9sTfieoVW4sLL0IbDeARVHSoHTSdbAiTh/lN8Nr5v+nJs0jWglkmVNVyQf9xm3360iUE1kCScip3f7h7I0yrjNpjdcqN8520UbRiLqpoAoviW9zbjul/0cTPgcbF+aLDQznmiZn4Mt2dyNd8OCrbf9oWoX8FZqTPf/Oc/25zh5H/ZSBkGw430OgUWCC3CFhECEzKEaGnsQZiDS4JjznsolWLI9zdvLOPhAaL22iPd8HWqFsClLRkvdW6wxWFX9JZLtsXerGpqhLNZKm70QC42vob8Mk2BlGQUAupkUQjMzpSICPAAlx2YG2jQsFmEP3qqZbO2URSYRbGH/OQPs/lRKtlAObYwOewTK41RZdXAOhoStabR0K6eIFGJS+I65CAWbLahjuNQqkuhouv/Z4Dxaw3F7zHg7A0lG3B1wUD9U7tC64moIqiGvRYhTGwm7cZ/fsluqas4d+e4DhpxqdKh9TorV5dvyCC0bF7YlytHi5e6p+xMcXFw7OU526pLHRfKc7yYNMRsK/osJlUpNz4jR9Jf8QgXHW3c1wZY0TVQ9Y3U3chRcF1u0MGv367nuLRyffvUbeCD57MlQLyTgj9faa4mSbyGUIHSabOatJip8fN9ED62TPaXFyQYVFxCDFJkQ85E+qeU/gP+Tw3ByBZ/yn4PybpAgDWUw87Qvg8=
