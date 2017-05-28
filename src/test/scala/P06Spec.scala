@@ -5,13 +5,14 @@ class P06Spec extends UnitSpec {
     assert(isPalindrome(List(1, 2, 3, 2, 1)) == true)
   }
   it should "find out whether a list is a palindrome" in {
-    val validList = Table(
-      "v",
-      Nil,
-      List(1)
+    val samples = Table(
+      ("i", "o"),
+      (Nil, true),
+      (List(1), true),
+      (List(1, 2, 3, 4, 5), false)
     )
-    forAll(validList) { (v: List[Int]) =>
-      assert(isPalindrome(v) == true)
+    forAll(samples) { (i: List[Int], o: Boolean) =>
+      assert(isPalindrome(i) == o)
     }
   }
 }
