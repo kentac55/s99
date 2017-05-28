@@ -5,14 +5,14 @@ class P03Spec extends UnitSpec {
     assert(nth(2, List(1, 1, 2, 3, 5, 8)) == 2)
   }
   it should "find the Kth element of a list." in {
-    forAll { (i: Int, s: List[Int]) =>
-      (i, s) match {
-        case (x, y) if x < 0 || x > y.length - 1 =>
+    forAll { (idx: Int, lst: List[Int]) =>
+      (idx, lst) match {
+        case (i, l) if i < 0 || i > l.length - 1 =>
           intercept[IndexOutOfBoundsException] {
-            nth(i, s)
+            nth(idx, lst)
           }
         case (_, _) =>
-          assert(nth(i, s) == s(i))
+          assert(nth(idx, lst) == lst(idx))
       }
     }
   }

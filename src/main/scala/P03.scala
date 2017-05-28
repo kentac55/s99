@@ -1,7 +1,7 @@
 object P03 {
-  def nth[T](i: Int, l: List[T]): T = (i, l) match {
-    case (x, head :: _) if x == 0            => head
-    case (x, y) if x < 0 || x > y.length - 1 => throw new IndexOutOfBoundsException
-    case (_, _)                              => nth(i - 1, l.tail)
+  def nth[T](index: Int, list: List[T]): T = (index, list) match {
+    case (i, h :: _) if i == 0               => h
+    case (i, l) if i < 0 || i > l.length - 1 => throw new IndexOutOfBoundsException
+    case (_, _)                              => nth(index - 1, list.tail)
   }
 }

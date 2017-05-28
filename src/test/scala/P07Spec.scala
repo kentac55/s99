@@ -7,7 +7,8 @@ class P07Spec extends UnitSpec {
   it should "flatten a nested list structure" in {
     val samples = Table(
       ("i", "o"),
-      (List(List(List(List(1), 2), 3), 4), List(1, 2, 3, 4)),
+      (List(1), List(1)),
+      (List(List(List(List(1), 2), 3), 4), (1 to 4).toList),
       (Nil, Nil)
     )
     forAll(samples) { (i: List[Any], o: List[Any]) =>

@@ -1,7 +1,7 @@
 object P07 {
-  def flatten(l: List[Any]): List[Any] = l match {
-    case Nil                => Nil
-    case (x: List[_]) :: xs => flatten(x) ::: flatten(xs)
-    case x :: xs            => x :: flatten(xs)
+  def flatten(list: List[Any]): List[Any] = list match {
+    case Nil               => Nil
+    case (h: List[_]) :: t => flatten(h) ::: flatten(t)
+    case h :: t            => h :: flatten(t)
   }
 }
