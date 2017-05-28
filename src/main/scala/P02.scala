@@ -1,7 +1,7 @@
 object P02 {
-  def penultimate[T](l: List[T]): T = l match {
-    case _ :: tail if tail.length > 1  => penultimate(l.tail)
-    case _ :: tail if tail.length == 1 => l.head
-    case _                             => throw new NoSuchElementException
+  def penultimate[T](list: List[T]): T = list match {
+    case _ :: t if t.length > 1  => penultimate(list.tail)
+    case _ :: t if t.length == 1 => list.head
+    case _                       => throw new NoSuchElementException
   }
 }

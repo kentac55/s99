@@ -1,11 +1,11 @@
 object P06 {
-  def isPalindrome[T](l: List[T]): Boolean = {
-    def recIsPalindrome[A](a: List[A], b: List[A]): Boolean = (a, b) match {
-      case (Nil, Nil)                                 => true
-      case (headA :: _, headB :: _) if headA != headB => false
-      case (_, _)                                     => recIsPalindrome(a.tail, b.tail)
+  def isPalindrome[T](list: List[T]): Boolean = {
+    def rec(a: List[T], b: List[T]): Boolean = (a, b) match {
+      case (Nil, Nil)                     => true
+      case (ha :: _, hb :: _) if ha != hb => false
+      case (_, _)                         => rec(a.tail, b.tail)
     }
     import P05.reverse
-    recIsPalindrome(l, reverse(l))
+    rec(list, reverse(list))
   }
 }

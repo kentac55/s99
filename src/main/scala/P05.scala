@@ -1,9 +1,9 @@
 object P05 {
-  def reverse[T](l: List[T]): List[T] = {
-    def recReverse[A](lst: List[A], acc: List[A] = Nil): List[A] = lst match {
+  def reverse[T](list: List[T]): List[T] = {
+    def rec(l: List[T], acc: List[T] = Nil): List[T] = l match {
       case Nil => acc
-      case _   => recReverse(lst.tail, lst.head :: acc)
+      case _   => rec(l.tail, l.head :: acc)
     }
-    recReverse(l)
+    rec(list)
   }
 }

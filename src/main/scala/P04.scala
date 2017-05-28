@@ -1,9 +1,9 @@
 object P04 {
-  def length[T](l: List[T]): Int = {
-    def recLength[A](lst: List[A], acc: Int = 0): Int = lst match {
+  def length[T](list: List[T]): Int = {
+    def rec(l: List[T], acc: Int = 0): Int = l match {
       case Nil => acc
-      case _   => recLength(lst.tail, acc + 1)
+      case _   => rec(l.tail, acc + 1)
     }
-    recLength(l)
+    rec(list)
   }
 }

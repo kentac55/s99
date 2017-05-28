@@ -5,10 +5,10 @@ class P01Spec extends UnitSpec {
     assert(last(List(1, 1, 2, 3, 5, 8)) == 8)
   }
   it should "find the last element of a list" in {
-    forAll { (s: List[Int]) =>
-      s match {
-        case l if l.length == 1 => assert(last(s) == s.last)
-        case l if l.nonEmpty    => assert(last(s) == s.last)
+    forAll { (l: List[Int]) =>
+      l match {
+        case l if l.length == 1 => assert(last(l) == l.last)
+        case l if l.nonEmpty    => assert(last(l) == l.last)
         case _ =>
           intercept[NoSuchElementException] {
             last(List.empty[Int])

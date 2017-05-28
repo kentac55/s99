@@ -5,8 +5,8 @@ class P04Spec extends UnitSpec {
     assert(length(List(1, 1, 2, 3, 5, 8)) == 6)
   }
   it should "find the number of elements of a list" in {
-    forAll { (s: List[Int]) =>
-      assert(length(s) == s.length)
+    forAll { (l: List[Int]) =>
+      assert(length(l) == l.length)
     }
   }
 }

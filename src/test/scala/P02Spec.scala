@@ -5,9 +5,9 @@ class P02Spec extends UnitSpec {
     assert(penultimate(List(1, 1, 2, 3, 5, 8)) == 5)
   }
   it should "find the last but one element of a list" in {
-    forAll { (s: List[Int]) =>
-      s match {
-        case l if l.length > 1 => assert(penultimate(s) == s(s.length - 2))
+    forAll { (l: List[Int]) =>
+      l match {
+        case l if l.length > 1 => assert(penultimate(l) == l(l.length - 2))
         case _ =>
           intercept[NoSuchElementException] {
             penultimate(List.empty[Int])
