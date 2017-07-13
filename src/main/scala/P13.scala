@@ -1,10 +1,10 @@
 object P13 {
   def encodeDirect[T](list: List[T]): List[(Int, T)] = {
     type S = List[(Int, T)]
-    def rec(lst: List[T], acc: S = Nil): S = (lst, acc) match {
+    def go(lst: List[T], acc: S = Nil): S = (lst, acc) match {
       case (Nil, res)                       => reverse(res)
-      case (h :: t, ah :: at) if h == ah._2 => rec(t, (ah._1 + 1, h) :: at)
-      case (h :: t, l)                      => rec(t, (1, h) :: l)
+      case (h :: t, ah :: at) if h == ah._2 => go(t, (ah._1 + 1, h) :: at)
+      case (h :: t, l)                      => go(t, (1, h) :: l)
     }
     def reverse(lst: S): S = {
       def recReverse(l: S, acc: S = Nil): S = l match {
@@ -13,6 +13,6 @@ object P13 {
       }
       recReverse(lst)
     }
-    rec(list)
+    go(list)
   }
 }
